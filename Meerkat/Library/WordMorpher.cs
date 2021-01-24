@@ -12,7 +12,7 @@ namespace Meerkat.Library
 			= new Dictionary<string, IFormConverter<Noun>>() 
 			{
 				{"about", new AboutConverter() },
-				{"о-об", new AboutConverter() },
+				{"обо", new AboutConverter() },
 			};
 
 
