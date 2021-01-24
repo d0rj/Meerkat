@@ -7,6 +7,9 @@ namespace MeerkatUI
 {
 	public partial class MainWindow : Window
 	{
+		private TemplateEngine engine;
+
+
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -16,10 +19,14 @@ namespace MeerkatUI
 				{"X", "коммунизм" },
 			};
 
-			var engine = new TemplateEngine(variables);
-			var text = engine.ProcessTemplate("Скажи нет [X|дательный]!");
+			engine = new TemplateEngine(variables);
+		}
 
-			testText.Text = text;
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			var text = engine.ProcessTemplate(InputTextbox.Text);
+
+			OutputTextbox.Text = text;
 		}
 	}
 }
