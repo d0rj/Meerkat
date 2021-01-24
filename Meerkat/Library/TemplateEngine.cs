@@ -10,7 +10,7 @@ namespace Meerkat.Library
 		private WordMorpher wordMorpher = new WordMorpher();
 
 
-		public readonly string GeneralRegex = @"\[[\ ]*([A-Z_-]+)[\ ]*[|]{0,1}[\ ]*(\w*)[\ ]*\]";
+		public readonly string GeneralRegex = @"\[[\t ]*([A-Z_-]+)[\t ]*[|]{0,1}[\t ]*(\w*)[\t ]*\]";
 
 		public bool IgnoreUnknown { get; set; }
 		public Dictionary<string, string> Variables { get; set; }

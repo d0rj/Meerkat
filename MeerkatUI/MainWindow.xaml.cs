@@ -1,15 +1,15 @@
 ﻿using Meerkat.Library;
+using MeerkatUI.Utils;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
-using MeerkatUI.Utils;
 
 
 namespace MeerkatUI
 {
 	public partial class MainWindow : Window, INotifyPropertyChanged
 	{
-		private TemplateEngine engine;
+		private readonly TemplateEngine engine;
 
 
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -45,11 +45,24 @@ namespace MeerkatUI
 			DataContext = this;
 		}
 
+
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			var text = engine.ProcessTemplate(InputTextbox.Text);
 
 			OutputTextbox.Text = text;
+		}
+
+
+		private void IgnoreUnknown_Checked(object sender, RoutedEventArgs e)
+		{
+			engine.IgnoreUnknown = true;
+		}
+
+
+		private void IgnoreUnknown_Unchecked(object sender, RoutedEventArgs e)
+		{
+			engine.IgnoreUnknown = false;
 		}
 	}
 }
