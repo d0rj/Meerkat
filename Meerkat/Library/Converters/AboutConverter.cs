@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace TextGen.Lib.Converters
+namespace Meerkat.Library.Converters
 {
 	public sealed class AboutConverter : IFormConverter<Noun>
 	{

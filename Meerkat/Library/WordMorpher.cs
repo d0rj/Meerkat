@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using LingvoNET;
-using TextGen.Lib.Converters;
+using Meerkat.Library.Converters;
 
 
-namespace TextGen.Lib
+namespace Meerkat.Library
 {
 	public sealed class WordMorpher
 	{

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 
-namespace TextGen.Lib
+namespace Meerkat.Library
 {
 	public sealed class TemplateEngine
 	{
@@ -38,21 +35,21 @@ namespace TextGen.Lib
 
 			foreach (Match match in Regex.Matches(template, GeneralRegex))
 			{
-				var matches = match.Groups[0].Value;
-				var parsedVars = match.Groups[1].Value;
-				var forms = match.Groups[2].Value;
+				var matched = match.Groups[0].Value;
+				var parsedVar = match.Groups[1].Value;
+				var form = match.Groups[2].Value;
 
-				if (Variables.ContainsKey(parsedVars))
+				if (Variables.ContainsKey(parsedVar))
 				{
-					var processedWord = wordMorpher.Morph(Variables[parsedVars], forms);
-					result = result.Replace(matches, processedWord);
+					var processedWord = wordMorpher.Morph(Variables[parsedVar], form);
+					result = result.Replace(matched, processedWord);
 				}
 				else
 				{
 					if (IgnoreUnknown)
 						continue;
 					else
-						throw new Exception("No such variable: " + parsedVars);
+						throw new Exception("No such variable: " + parsedVar);
 				}
 			}
 

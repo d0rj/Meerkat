@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meerkat", "Meerkat\Meerkat.csproj", "{14B8E41C-E42C-4DB1-ADF3-F9F9E5D12BF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeerkatUI", "MeerkatUI\MeerkatUI.csproj", "{45E13237-80E1-40AC-8623-7C566AFC5796}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14B8E41C-E42C-4DB1-ADF3-F9F9E5D12BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14B8E41C-E42C-4DB1-ADF3-F9F9E5D12BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14B8E41C-E42C-4DB1-ADF3-F9F9E5D12BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14B8E41C-E42C-4DB1-ADF3-F9F9E5D12BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45E13237-80E1-40AC-8623-7C566AFC5796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45E13237-80E1-40AC-8623-7C566AFC5796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45E13237-80E1-40AC-8623-7C566AFC5796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45E13237-80E1-40AC-8623-7C566AFC5796}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9D08E2BB-234A-42C6-9CC1-A5335BAEC8F1}
+	EndGlobalSection
+EndGlobal

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{14452983-A7E6-4FC5-841D-02895B559687}</ProjectGuid>
+    <ProjectGuid>{45E13237-80E1-40AC-8623-7C566AFC5796}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TextGen</RootNamespace>
-    <AssemblyName>TextGen</AssemblyName>
+    <RootNamespace>MeerkatUI</RootNamespace>
+    <AssemblyName>MeerkatUI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,9 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LingvoNET, Version=1.1.2.0, Culture=neutral, PublicKeyToken=7d49b21a20bef57b, processorArchitecture=MSIL">
-      <HintPath>..\packages\LingvoNET.1.1.2\lib\LingvoNET.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -66,11 +63,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Lib\Converters\AboutConverter.cs" />
-    <Compile Include="Lib\Converters\DefaultConverter.cs" />
-    <Compile Include="Lib\Converters\IFormConverter.cs" />
-    <Compile Include="Lib\TemplateEngine.cs" />
-    <Compile Include="Lib\WordMorpher.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -94,7 +86,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -102,6 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Meerkat\Meerkat.csproj">
+      <Project>{14b8e41c-e42c-4db1-adf3-f9f9e5d12bf5}</Project>
+      <Name>Meerkat</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

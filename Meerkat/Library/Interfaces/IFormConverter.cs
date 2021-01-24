@@ -1,7 +1,7 @@
 ﻿
 
 
-namespace TextGen.Lib
+namespace Meerkat.Library
 {
 	interface IFormConverter <T>
 	{
