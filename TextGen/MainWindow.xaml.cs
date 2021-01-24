@@ -12,17 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LingvoNET;
+using TextGen.Lib;
+
 
 namespace TextGen
 {
-	/// <summary>
-	/// Логика взаимодействия для MainWindow.xaml
-	/// </summary>
 	public partial class MainWindow : Window
 	{
 		public MainWindow()
 		{
 			InitializeComponent();
+			var variables = new Dictionary<string, string>() {
+				{"X", "коммунизм" }
+			};
+			var engine = new TemplateEngine(variables, ignoreUnknown: true);
+			var text = engine.ProcessTemplate("Скажи нет [X|дате]!");
+			testText.Text = text;
 		}
 	}
 }
