@@ -1,8 +1,11 @@
 ﻿using Meerkat.Library;
 using MeerkatUI.Utils;
 
+using Microsoft.Win32;
+
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -90,6 +93,20 @@ namespace MeerkatUI
 
 			if (variable != null)
 				Variables.Remove(variable);
+		}
+
+
+		private void OpenFileMenu_Click(object sender, RoutedEventArgs e)
+		{
+			var openFileDialogue = new OpenFileDialog()
+			{
+				Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*"
+			};
+
+			if (openFileDialogue.ShowDialog() == true)
+			{
+				InputTextbox.Text = File.ReadAllText(openFileDialogue.FileName);
+			}
 		}
 	}
 }
