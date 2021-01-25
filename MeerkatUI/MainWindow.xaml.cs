@@ -48,7 +48,12 @@ namespace MeerkatUI
 		{
 			engine.Variables.Clear();
 			foreach (var variable in Variables)
-				engine.Variables.Add(variable.Name, variable.Value);
+			{
+				if (engine.Variables.ContainsKey(variable.Name))
+					engine.Variables[variable.Name] = variable.Value;
+				else
+					engine.Variables.Add(variable.Name, variable.Value);
+			}
 		}
 
 
