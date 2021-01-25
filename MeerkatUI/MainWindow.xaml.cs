@@ -1,7 +1,6 @@
 ﻿using Meerkat.Library;
 using MeerkatUI.Utils;
 
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -23,10 +22,7 @@ namespace MeerkatUI
 		}
 
 
-		private ObservableCollection<Variable> variables = new ObservableCollection<Variable>()
-		{
-			new Variable("Y", "утка"),
-		};
+		private ObservableCollection<Variable> variables = new ObservableCollection<Variable>();
 		public ObservableCollection<Variable> Variables 
 		{
 			get => variables;
@@ -48,11 +44,17 @@ namespace MeerkatUI
 		}
 
 
-		private void Button_Click(object sender, RoutedEventArgs e)
+		private void RefreshVariables()
 		{
+			engine.Variables.Clear();
 			foreach (var variable in Variables)
 				engine.Variables.Add(variable.Name, variable.Value);
+		}
 
+
+		private void ProcessButton_Click(object sender, RoutedEventArgs e)
+		{
+			RefreshVariables();
 			var text = engine.ProcessTemplate(InputTextbox.Text);
 
 			OutputTextbox.Text = text;
