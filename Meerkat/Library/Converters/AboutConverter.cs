@@ -7,7 +7,7 @@ namespace Meerkat.Library.Converters
 	public sealed class AboutConverter : IFormConverter<Noun>
 	{
 		private readonly List<char> vowels 
-			= new List<char>() { 'ё', 'у', 'е', 'ы', 'а', 'о', 'э', 'я', 'и', 'ю' };
+			= new List<char>() { 'у', 'ы', 'а', 'о', 'э', 'и' };
 
 
 		public string Convert(Noun word)
