@@ -6,13 +6,24 @@
         xmlns:local="clr-namespace:MeerkatUI" 
 		mc:Ignorable="d"
         Title="Редактор" MinHeight="535" MinWidth="850">
+	
+	<Window.CommandBindings>
+		<CommandBinding Command="Open" Executed="OpenCommandBinding_Executed"/>
+		<CommandBinding Command="SaveAs" Executed="SaveResultAsCommandBinding_Executed"/>
+	</Window.CommandBindings>
+	<Window.InputBindings>
+		<KeyBinding Key="O" Modifiers="Control" Command="Open"/>
+		<KeyBinding Key="S" Modifiers="Control" Command="SaveAs"/>
+	</Window.InputBindings>
+
+
 	<DockPanel>
 		<Menu VerticalAlignment="Center" DockPanel.Dock="Top" Height="25">
 			<MenuItem Header="Файл">
-				<MenuItem Header="Открыть..." Click="OpenFileMenu_Click" ></MenuItem>
+				<MenuItem Header="Открыть..." Click="OpenFileMenu_Click" InputGestureText="Ctrl+O"></MenuItem>
 				<MenuItem Header="Сохранить шаблон" Click="SaveTemplate_Click" />
 				<MenuItem Header="Сохранить шаблон как..." Click="SaveTemplateAs_Click" />
-				<MenuItem Header="Сохранить результат как..." Click="SaveResult_Click" />
+				<MenuItem Header="Сохранить результат как..." Click="SaveResult_Click" InputGestureText="Ctrl+S"/>
 				<Separator />
 				<MenuItem Header="Выход" Click="ExitMenu_Click" ></MenuItem>
 			</MenuItem>

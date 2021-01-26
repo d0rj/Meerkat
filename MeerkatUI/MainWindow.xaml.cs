@@ -9,7 +9,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-
+using System.Windows.Input;
 
 namespace MeerkatUI
 {
@@ -161,5 +161,13 @@ namespace MeerkatUI
 		{
 			Application.Current.Shutdown();
 		}
+
+
+		private void OpenCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e) 
+			=> OpenFileMenu_Click(sender, e);
+
+
+		private void SaveResultAsCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+			=> SaveResult_Click(sender, e);
 	}
 }
