@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Meerkat.Library.Exceptions;
+
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
@@ -49,7 +50,7 @@ namespace Meerkat.Library
 					if (IgnoreUnknown)
 						continue;
 					else
-						throw new Exception("No such variable: " + parsedVar);
+						throw new UnknownVariableException(parsedVar);
 				}
 			}
 

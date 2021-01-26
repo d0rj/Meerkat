@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Library\Converters\AboutConverter.cs" />
     <Compile Include="Library\Converters\DefaultConverter.cs" />
+    <Compile Include="Library\Exceptions\UnknownVariableException.cs" />
     <Compile Include="Library\Interfaces\IFormConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Library\TemplateEngine.cs" />

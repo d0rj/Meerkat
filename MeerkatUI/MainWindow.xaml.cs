@@ -1,4 +1,6 @@
 ﻿using Meerkat.Library;
+using Meerkat.Library.Exceptions;
+
 using MeerkatUI.Utils;
 
 using Microsoft.Win32;
@@ -11,19 +13,13 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
+
 namespace MeerkatUI
 {
 	public partial class MainWindow : Window, INotifyPropertyChanged
 	{
 		private readonly TemplateEngine engine;
 		private string openedTemplatePath = string.Empty;
-
-
-		public event PropertyChangedEventHandler PropertyChanged;
-		public void OnPropertyChanged([CallerMemberName] string prop = "")
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-		}
 
 
 		private ObservableCollection<Variable> variables = new ObservableCollection<Variable>();
@@ -36,6 +32,13 @@ namespace MeerkatUI
 				OnPropertyChanged("Variables");
 			}
 		} 
+
+
+		public event PropertyChangedEventHandler PropertyChanged;
+		public void OnPropertyChanged([CallerMemberName] string prop = "")
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+		}
 
 
 		public MainWindow()
@@ -64,9 +67,20 @@ namespace MeerkatUI
 		private void ProcessButton_Click(object sender, RoutedEventArgs e)
 		{
 			RefreshVariables();
-			var text = engine.ProcessTemplate(InputTextbox.Text);
 
-			OutputTextbox.Text = text;
+			try
+			{
+				var text = engine.ProcessTemplate(InputTextbox.Text);
+				OutputTextbox.Text = text;
+			}
+			catch (UnknownVariableException exception)
+			{
+				MessageBox.Show(
+					$"Неизвестная переменная '{exception.Varname}'.", 
+					"Ошибка ввода данных.", 
+					MessageBoxButton.OK, 
+					MessageBoxImage.Error);
+			}
 		}
 
 
@@ -90,9 +104,7 @@ namespace MeerkatUI
 
 		private void DeleteVariable(object sender, RoutedEventArgs e)
 		{
-			var variable = ((Button)sender).DataContext as Variable;
-
-			if (variable != null)
+			if (((Button)sender).DataContext is Variable variable)
 				Variables.Remove(variable);
 		}
 
