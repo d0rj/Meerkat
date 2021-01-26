@@ -64,6 +64,13 @@ namespace MeerkatUI
 		}
 
 
+		private void HighlightString(string str)
+		{
+			InputTextbox.Focus();
+			InputTextbox.Select(InputTextbox.Text.IndexOf(str), str.Length);
+		}
+
+
 		private void ProcessButton_Click(object sender, RoutedEventArgs e)
 		{
 			RefreshVariables();
@@ -80,6 +87,8 @@ namespace MeerkatUI
 					"Ошибка ввода данных.", 
 					MessageBoxButton.OK, 
 					MessageBoxImage.Error);
+
+				HighlightString(exception.Varname);
 			}
 			catch (UnknownFormException exception)
 			{
@@ -88,6 +97,8 @@ namespace MeerkatUI
 					"Ошибка ввода данных.",
 					MessageBoxButton.OK,
 					MessageBoxImage.Error);
+
+				HighlightString(exception.Form);
 			}
 		}
 
