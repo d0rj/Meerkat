@@ -8,7 +8,7 @@ namespace Meerkat.Library
 {
 	public sealed class TemplateEngine
 	{
-		private readonly WordMorpher wordMorpher = new WordMorpher();
+		private readonly NounMorpher wordMorpher = new NounMorpher();
 
 
 		public readonly string GeneralRegex = @"\[[\t ]*([A-Z_-]+)[\t ]*[|]{0,1}[\t ]*(\w*)[\t ]*(\+){0,1}\]";

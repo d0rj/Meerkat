@@ -6,7 +6,7 @@ using Meerkat.Library.Exceptions;
 
 namespace Meerkat.Library
 {
-	public sealed class WordMorpher
+	public sealed class NounMorpher
 	{
 		private readonly Dictionary<string, Noun> cachedNouns = new Dictionary<string, Noun>();
 		private readonly Dictionary<string, IFormConverter<Noun>> formConverters 
