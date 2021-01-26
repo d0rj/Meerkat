@@ -16,6 +16,7 @@ namespace MeerkatUI
 	public partial class MainWindow : Window, INotifyPropertyChanged
 	{
 		private readonly TemplateEngine engine;
+		private string openedTemplatePath = string.Empty;
 
 
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -105,8 +106,60 @@ namespace MeerkatUI
 
 			if (openFileDialogue.ShowDialog() == true)
 			{
-				InputTextbox.Text = File.ReadAllText(openFileDialogue.FileName);
+				openedTemplatePath = openFileDialogue.FileName;
+				InputTextbox.Text = File.ReadAllText(openedTemplatePath);
 			}
+		}
+
+
+		private void SaveTemplate_Click(object sender, RoutedEventArgs e)
+		{
+			if (openedTemplatePath != string.Empty)
+			{
+				SaveToFile(InputTextbox.Text, openedTemplatePath);
+			}
+			else
+			{
+				SaveToFile(InputTextbox.Text);
+			}
+		}
+
+
+		private void SaveTemplateAs_Click(object sender, RoutedEventArgs e)
+		{
+			SaveToFile(InputTextbox.Text);
+		}
+
+
+		private void SaveResult_Click(object sender, RoutedEventArgs e)
+		{
+			SaveToFile(OutputTextbox.Text);
+		}
+
+
+		private void SaveToFile(string text, string filepath)
+		{
+			File.WriteAllText(filepath, text);
+		}
+
+
+		private void SaveToFile(string text)
+		{
+			var saveTemplateDialog = new SaveFileDialog()
+			{
+				Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*"
+			};
+
+			if (saveTemplateDialog.ShowDialog() == true)
+			{
+				SaveToFile(text, saveTemplateDialog.FileName);
+			}
+		}
+
+
+		private void ExitMenu_Click(object sender, RoutedEventArgs e)
+		{
+			Application.Current.Shutdown();
 		}
 	}
 }
