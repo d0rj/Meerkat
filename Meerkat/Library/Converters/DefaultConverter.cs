@@ -7,6 +7,7 @@ namespace Meerkat.Library.Converters
 	public class DefaultConverter : IFormConverter<Noun>
 	{
 		protected readonly Case convertCase;
+		protected readonly Number number;
 
 
 		protected static Dictionary<string, Case> commands = 
@@ -30,18 +31,25 @@ namespace Meerkat.Library.Converters
 			};
 
 
-		public DefaultConverter(string command)
+		public DefaultConverter(string command, string number = "")
 		{
 			if (commands.ContainsKey(command))
 				convertCase = commands[command];
 			else
 				convertCase = Case.Undefined;
+
+			if (number == string.Empty)
+				this.number = Number.Singular;
+			else if (number == "+")
+				this.number = Number.Plural;
+			else
+				this.number = Number.Undefined;
 		}
 
 
 		public string Convert(Noun word)
 		{
-			return word[convertCase];
+			return word[convertCase, number];
 		}
 	}
 }

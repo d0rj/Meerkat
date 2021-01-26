@@ -14,6 +14,9 @@ namespace Meerkat.Library
 			{
 				{"about", new AboutConverter() },
 				{"обо", new AboutConverter() },
+
+				{"about+", new AboutPluralConverter() },
+				{"обо+", new AboutPluralConverter() },
 			};
 
 
@@ -32,16 +35,16 @@ namespace Meerkat.Library
 		}
 
 
-		public string Morph(string word, string command)
+		public string Morph(string word, string command, string number = "")
 		{
 			var noun = GetCachedNoun(word);
 
 			if (formConverters.ContainsKey(command))
 			{
-				return formConverters[command].Convert(noun);
+				return formConverters[command + number].Convert(noun);
 			}
 			else
-				return new DefaultConverter(command).Convert(noun);
+				return new DefaultConverter(command, number).Convert(noun);
 		}
 	}
 }

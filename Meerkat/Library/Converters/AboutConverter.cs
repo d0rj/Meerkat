@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Meerkat.Library.Converters
 {
-	public sealed class AboutConverter : IFormConverter<Noun>
+	public class AboutConverter : IFormConverter<Noun>
 	{
 		private readonly List<char> vowels 
 			= new List<char>() { 'у', 'ы', 'а', 'о', 'э', 'и' };
@@ -12,7 +12,7 @@ namespace Meerkat.Library.Converters
 
 		public string Convert(Noun word)
 		{
-			string result = word[Case.Locative];
+			string result = MorphWord(word);
 
 			if (vowels.Contains(result[0]))
 				result = "об " + result;
@@ -20,6 +20,12 @@ namespace Meerkat.Library.Converters
 				result = "о " + result;
 
 			return result;
+		}
+
+
+		protected virtual string MorphWord(Noun word)
+		{
+			return word[Case.Locative];
 		}
 	}
 }
