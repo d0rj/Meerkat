@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using LingvoNET;
 using Meerkat.Library.Converters;
+using Meerkat.Library.Exceptions;
 
 
 namespace Meerkat.Library
@@ -19,7 +20,13 @@ namespace Meerkat.Library
 		private Noun GetCachedNoun(string word)
 		{
 			if (!cachedNouns.ContainsKey(word))
-				cachedNouns.Add(word, Nouns.FindOne(word));
+			{
+				var noun = Nouns.FindOne(word);
+				if (noun == null)
+					throw new UnknownWordException(word);
+
+				cachedNouns.Add(word, noun);
+			}
 
 			return cachedNouns[word];
 		}
