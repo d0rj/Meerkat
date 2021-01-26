@@ -1,4 +1,7 @@
 ﻿using LingvoNET;
+
+using Meerkat.Library.Exceptions;
+
 using System.Collections.Generic;
 
 
@@ -36,14 +39,14 @@ namespace Meerkat.Library.Converters
 			if (commands.ContainsKey(command))
 				convertCase = commands[command];
 			else
-				convertCase = Case.Undefined;
+				throw new UnknownFormException(command, "for nouns");
 
 			if (number == string.Empty)
 				this.number = Number.Singular;
 			else if (number == "+")
 				this.number = Number.Plural;
 			else
-				this.number = Number.Undefined;
+				throw new UnknownFormException(command + number, "for nouns");
 		}
 
 

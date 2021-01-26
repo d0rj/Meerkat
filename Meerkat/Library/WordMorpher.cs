@@ -8,8 +8,8 @@ namespace Meerkat.Library
 {
 	public sealed class WordMorpher
 	{
-		private Dictionary<string, Noun> cachedNouns = new Dictionary<string, Noun>();
-		private Dictionary<string, IFormConverter<Noun>> formConverters 
+		private readonly Dictionary<string, Noun> cachedNouns = new Dictionary<string, Noun>();
+		private readonly Dictionary<string, IFormConverter<Noun>> formConverters 
 			= new Dictionary<string, IFormConverter<Noun>>() 
 			{
 				{"about", new AboutConverter() },

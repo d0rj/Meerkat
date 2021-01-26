@@ -81,6 +81,14 @@ namespace MeerkatUI
 					MessageBoxButton.OK, 
 					MessageBoxImage.Error);
 			}
+			catch (UnknownFormException exception)
+			{
+				MessageBox.Show(
+					$"Неизвестная форма '{exception.Form}'.",
+					"Ошибка ввода данных.",
+					MessageBoxButton.OK,
+					MessageBoxImage.Error);
+			}
 		}
 
 
