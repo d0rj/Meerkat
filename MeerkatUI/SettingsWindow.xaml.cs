@@ -40,7 +40,7 @@ namespace MeerkatUI
 		{
 			var mainWindow = Owner as MainWindow;
 
-			mainWindow.Settings = Settings;
+			mainWindow.Settings = Settings.Copy();
 		}
 
 
