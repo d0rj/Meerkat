@@ -18,6 +18,9 @@ namespace MeerkatUI
 {
 	public partial class MainWindow : Window, INotifyPropertyChanged
 	{
+		private readonly TemplateEngine engine;
+		private string openedTemplatePath = string.Empty;
+
 		private Settings settings = new Settings();
 		public Settings Settings
 		{
@@ -28,10 +31,6 @@ namespace MeerkatUI
 				OnPropertyChanged(nameof(Settings));
 			}
 		}
-
-		private readonly TemplateEngine engine;
-		private string openedTemplatePath = string.Empty;
-
 
 		private ObservableCollection<Variable> variables = new ObservableCollection<Variable>();
 		public ObservableCollection<Variable> Variables 
