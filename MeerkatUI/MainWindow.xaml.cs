@@ -214,12 +214,12 @@ namespace MeerkatUI
 
 		private void OpenSettings_Click(object sender, RoutedEventArgs e)
 		{
-			var settings = new SettingsWindow()
+			var settingsWindow = new SettingsWindow()
 			{
 				Owner = this,
 			};
 
-			settings.Show();
+			settingsWindow.Show();
 		}
 	}
 }
