@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using MeerkatUI.Utils;
+
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 
@@ -7,14 +9,14 @@ namespace MeerkatUI
 {
 	public partial class SettingsWindow : Window, INotifyPropertyChanged
 	{
-		private int editorFontSize = 12;
-		public int EditorFontSize
+		private Settings settings = new Settings();
+		public Settings Settings
 		{
-			get => editorFontSize;
+			get => settings;
 			set
 			{
-				editorFontSize = value;
-				OnPropertyChanged(nameof(EditorFontSize));
+				settings = value;
+				OnPropertyChanged(nameof(Settings));
 			}
 		}
 
@@ -23,7 +25,7 @@ namespace MeerkatUI
 		{
 			InitializeComponent();
 
-			DataContext = this;
+			DataContext = Settings;
 		}
 
 
@@ -38,7 +40,7 @@ namespace MeerkatUI
 		{
 			var mainWindow = Owner as MainWindow;
 
-			mainWindow.EditorFontSize = EditorFontSize;
+			mainWindow.Settings = Settings;
 
 			mainWindow.Focus();
 		}
