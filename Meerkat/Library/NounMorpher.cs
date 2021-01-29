@@ -8,15 +8,22 @@ namespace Meerkat.Library
 {
 	public sealed class NounMorpher : Caching<Noun>
 	{
-		private readonly Dictionary<string, IFormConverter<Noun>> formConverters 
-			= new Dictionary<string, IFormConverter<Noun>>() 
-			{
-				{"about", new AboutConverter() },
-				{"обо", new AboutConverter() },
+		private readonly Dictionary<string, IFormConverter<Noun>> formConverters;
 
-				{"about+", new AboutPluralConverter() },
-				{"обо+", new AboutPluralConverter() },
+
+		public NounMorpher()
+		{
+			var about = new AboutConverter();
+			var aboutPlural = new AboutPluralConverter();
+
+			formConverters = new Dictionary<string, IFormConverter<Noun>> {
+				{ "about", about },
+				{ "обо", about },
+
+				{ "about+", aboutPlural },
+				{ "обо+", aboutPlural },
 			};
+		}
 
 
 		public string Morph(string word, string command, string number = "")

@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Library\Caching.cs" />
     <Compile Include="Library\Converters\AboutConverter.cs" />
     <Compile Include="Library\Converters\AboutPluralConverter.cs" />
     <Compile Include="Library\Converters\DefaultConverter.cs" />
