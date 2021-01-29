@@ -36,13 +36,30 @@ namespace MeerkatUI
 		}
 
 
-		private void Window_Closing(object sender, CancelEventArgs e)
+		private void Apply()
 		{
 			var mainWindow = Owner as MainWindow;
 
 			mainWindow.Settings = Settings;
+		}
 
-			mainWindow.Focus();
+
+		private void Apply_Click(object sender, RoutedEventArgs e)
+		{
+			Apply();
+		}
+
+
+		private void Close_Click(object sender, RoutedEventArgs e)
+		{
+			Close();
+		}
+
+
+		private void Ok_Click(object sender, RoutedEventArgs e)
+		{
+			Apply();
+			Close();
 		}
 	}
 }

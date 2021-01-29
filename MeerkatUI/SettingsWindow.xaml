@@ -5,37 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MeerkatUI"
         mc:Ignorable="d"
-        Title="Настройки редактора" Height="250" Width="400" ResizeMode="NoResize" Closing="Window_Closing">
-    <Grid Margin="10">
+        Title="Настройки редактора" Height="350" Width="500" ResizeMode="NoResize">
+	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="20" />
-			<RowDefinition Height="20" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition />
-			<ColumnDefinition />
-		</Grid.ColumnDefinitions>
+		
+		<Grid Margin="10">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="20" />
+				<RowDefinition Height="20" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
 
-		<TextBlock Grid.Row="0" Grid.Column="0" Text="Размер шрифта редактора" HorizontalAlignment="Center" FontSize="12" />
-		<TextBox Grid.Row="0" Grid.Column="1" Width="100" TextAlignment="Center" HorizontalAlignment="Center" FontSize="12">
-			<TextBox.Text>
-				<Binding Path="EditorFontSize" NotifyOnValidationError="True">
-					<Binding.ValidationRules>
-						<ExceptionValidationRule />
-					</Binding.ValidationRules>
-				</Binding>
-			</TextBox.Text>
-		</TextBox>
+			<TextBlock Grid.Row="0" Grid.Column="0" Text="Размер шрифта редактора" HorizontalAlignment="Center" FontSize="14" />
+			<TextBox Grid.Row="0" Grid.Column="1" Width="100" TextAlignment="Center" HorizontalAlignment="Center" FontSize="14">
+				<TextBox.Text>
+					<Binding Path="EditorFontSize" NotifyOnValidationError="True">
+						<Binding.ValidationRules>
+							<ExceptionValidationRule />
+						</Binding.ValidationRules>
+					</Binding>
+				</TextBox.Text>
+			</TextBox>
 
-		<TextBlock Grid.Row="1" Grid.Column="0" Text="Размер шрифта вывода" HorizontalAlignment="Center" FontSize="12" />
-		<TextBox Grid.Row="1" Grid.Column="1" Width="100" TextAlignment="Center" HorizontalAlignment="Center">
-			<TextBox.Text>
-				<Binding Path="OutputFontSize" NotifyOnValidationError="True">
-					<Binding.ValidationRules>
-						<ExceptionValidationRule />
-					</Binding.ValidationRules>
-				</Binding>
-			</TextBox.Text>
-		</TextBox>
-	</Grid>
+			<TextBlock Grid.Row="1" Grid.Column="0" Text="Размер шрифта вывода" HorizontalAlignment="Center" FontSize="14" />
+			<TextBox Grid.Row="1" Grid.Column="1" Width="100" TextAlignment="Center" HorizontalAlignment="Center" FontSize="14">
+				<TextBox.Text>
+					<Binding Path="OutputFontSize" NotifyOnValidationError="True">
+						<Binding.ValidationRules>
+							<ExceptionValidationRule />
+						</Binding.ValidationRules>
+					</Binding>
+				</TextBox.Text>
+			</TextBox>
+		</Grid>
+
+		<Grid Grid.Row="1" Height="30" Margin="5" >
+			<StackPanel Orientation="Horizontal" Margin="2" HorizontalAlignment="Right">
+				<Button Content="Ок" Margin="5, 0" Width="50" Click="Ok_Click"/>
+				<Button Content="Отмена" Margin="5, 0" Width="70" Click="Close_Click"/>
+				<Button Content="Применить" Margin="10, 0" Width="90" Click="Apply_Click" />
+			</StackPanel>
+		</Grid>
+	</Grid>	
 </Window>
