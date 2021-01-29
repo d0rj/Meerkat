@@ -18,6 +18,17 @@ namespace MeerkatUI
 {
 	public partial class MainWindow : Window, INotifyPropertyChanged
 	{
+		private int editorFontSize = 12;
+		public int EditorFontSize 
+		{
+			get => editorFontSize;
+			set
+			{
+				editorFontSize = value;
+				OnPropertyChanged("EditorFontSize");
+			}
+		}
+
 		private readonly TemplateEngine engine;
 		private string openedTemplatePath = string.Empty;
 
@@ -200,5 +211,16 @@ namespace MeerkatUI
 
 		private void SaveResultAsCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
 			=> SaveResult_Click(sender, e);
+
+
+		private void OpenSettings_Click(object sender, RoutedEventArgs e)
+		{
+			var settings = new SettingsWindow() 
+			{ 
+				Owner = this
+			};
+
+			settings.Show();
+		}
 	}
 }
