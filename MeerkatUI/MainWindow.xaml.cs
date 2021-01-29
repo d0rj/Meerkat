@@ -31,7 +31,7 @@ namespace MeerkatUI
 				variables = value;
 				OnPropertyChanged("Variables");
 			}
-		} 
+		}
 
 
 		public event PropertyChangedEventHandler PropertyChanged;

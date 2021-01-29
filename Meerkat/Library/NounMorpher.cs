@@ -6,9 +6,8 @@ using Meerkat.Library.Exceptions;
 
 namespace Meerkat.Library
 {
-	public sealed class NounMorpher
+	public sealed class NounMorpher : Caching<Noun>
 	{
-		private readonly Dictionary<string, Noun> cachedNouns = new Dictionary<string, Noun>();
 		private readonly Dictionary<string, IFormConverter<Noun>> formConverters 
 			= new Dictionary<string, IFormConverter<Noun>>() 
 			{
@@ -20,24 +19,9 @@ namespace Meerkat.Library
 			};
 
 
-		private Noun GetCachedNoun(string word)
-		{
-			if (!cachedNouns.ContainsKey(word))
-			{
-				var noun = Nouns.FindOne(word);
-				if (noun == null)
-					throw new UnknownWordException(word);
-
-				cachedNouns.Add(word, noun);
-			}
-
-			return cachedNouns[word];
-		}
-
-
 		public string Morph(string word, string command, string number = "")
 		{
-			var noun = GetCachedNoun(word);
+			var noun = GetCached(word);
 
 			if (formConverters.ContainsKey(command))
 			{
@@ -45,6 +29,16 @@ namespace Meerkat.Library
 			}
 			else
 				return new DefaultConverter(command, number).Convert(noun);
+		}
+
+
+		public override void Cache(string key)
+		{
+			var noun = Nouns.FindOne(key);
+			if (noun == null)
+				throw new UnknownWordException(key);
+
+			cached.Add(key, noun);
 		}
 	}
 }
