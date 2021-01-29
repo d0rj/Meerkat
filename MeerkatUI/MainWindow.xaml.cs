@@ -25,7 +25,7 @@ namespace MeerkatUI
 			set
 			{
 				editorFontSize = value;
-				OnPropertyChanged("EditorFontSize");
+				OnPropertyChanged(nameof(EditorFontSize));
 			}
 		}
 
@@ -40,7 +40,7 @@ namespace MeerkatUI
 			set 
 			{
 				variables = value;
-				OnPropertyChanged("Variables");
+				OnPropertyChanged(nameof(Variables));
 			}
 		}
 

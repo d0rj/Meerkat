@@ -14,7 +14,7 @@ namespace MeerkatUI
 			set
 			{
 				editorFontSize = value;
-				OnPropertyChanged("EditorFontSize");
+				OnPropertyChanged(nameof(EditorFontSize));
 			}
 		}
 
