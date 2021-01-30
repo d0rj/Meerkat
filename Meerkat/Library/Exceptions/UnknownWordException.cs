@@ -11,7 +11,7 @@ namespace Meerkat.Library.Exceptions
 		public UnknownWordException(string word)
 			: base($"Unknown word '{word}' given.")
 		{
-
+			Word = word;
 		}
 	}
 }

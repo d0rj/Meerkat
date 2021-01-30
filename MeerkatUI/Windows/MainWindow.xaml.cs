@@ -110,6 +110,14 @@ namespace MeerkatUI
 
 				HighlightString(exception.Form);
 			}
+			catch (UnknownWordException exception)
+			{
+				MessageBox.Show(
+					$"Неизвестное слово '{exception.Word}'. Попробуйте использовать начальную форму.",
+					"Ошибка объявления переменных.",
+					MessageBoxButton.OK,
+					MessageBoxImage.Error);
+			}
 		}
 
 
