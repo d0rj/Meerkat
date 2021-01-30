@@ -94,7 +94,7 @@ namespace MeerkatUI
 			{
 				MessageBox.Show(
 					$"Неизвестная переменная '{exception.Varname}'.", 
-					"Ошибка ввода данных.", 
+					"Ошибка", 
 					MessageBoxButton.OK, 
 					MessageBoxImage.Error);
 
@@ -104,7 +104,7 @@ namespace MeerkatUI
 			{
 				MessageBox.Show(
 					$"Неизвестная форма '{exception.Form}'.",
-					"Ошибка ввода данных.",
+					"Ошибка шаблона",
 					MessageBoxButton.OK,
 					MessageBoxImage.Error);
 
@@ -114,7 +114,7 @@ namespace MeerkatUI
 			{
 				MessageBox.Show(
 					$"Неизвестное слово '{exception.Word}'. Попробуйте использовать начальную форму.",
-					"Ошибка объявления переменных.",
+					"Ошибка объявления переменных",
 					MessageBoxButton.OK,
 					MessageBoxImage.Error);
 			}
