@@ -214,7 +214,7 @@ namespace MeerkatUI
 
 		private void OpenSettings_Click(object sender, RoutedEventArgs e)
 		{
-			var settingsWindow = new SettingsWindow()
+			var settingsWindow = new SettingsWindow(Settings.Copy())
 			{
 				Owner = this,
 			};

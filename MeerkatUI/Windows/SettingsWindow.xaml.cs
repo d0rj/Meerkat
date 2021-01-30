@@ -28,9 +28,11 @@ namespace MeerkatUI
 		}
 
 
-		public SettingsWindow()
+		public SettingsWindow(Settings settings)
 		{
 			InitializeComponent();
+
+			Settings = settings;
 
 			DataContext = Settings;
 		}
