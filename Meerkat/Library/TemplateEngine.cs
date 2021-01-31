@@ -45,12 +45,7 @@ namespace Meerkat.Library
 			foreach (Match match in Regex.Matches(template, GeneralRegex))
 			{
 				var matched = match.Groups[0].Value;
-				var parsedVar = match.Groups[1].Value;
-				var form = match.Groups[2].Value;
-				var count = match.Groups[3].Value ?? string.Empty;
-				var gender = match.Groups[4].Value ?? string.Empty;
-
-				var modifier = count + gender;
+				var (parsedVar, command, modifier) = SplitMatch(match);
 
 				if (Variables.ContainsKey(parsedVar))
 				{
@@ -63,7 +58,7 @@ namespace Meerkat.Library
 						{
 							processedWord = morpher.Morph(
 								Variables[parsedVar],
-								form,
+								command,
 								modifier);
 
 							exception = null;
@@ -92,6 +87,17 @@ namespace Meerkat.Library
 			}
 
 			return result;
+		}
+
+
+		private (string parsedVar, string command, string modifier) SplitMatch(Match match)
+		{
+			var parsedVar = match.Groups[1].Value;
+			var command = match.Groups[2].Value;
+			var modifier = (match.Groups[3].Value ?? string.Empty) 
+							+ (match.Groups[4].Value ?? string.Empty);
+
+			return (parsedVar, command, modifier);
 		}
 	}
 }
