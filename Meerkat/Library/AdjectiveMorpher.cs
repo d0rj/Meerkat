@@ -2,11 +2,12 @@
 
 using Meerkat.Library.Converters;
 using Meerkat.Library.Exceptions;
+using Meerkat.Library.Interfaces;
 
 
 namespace Meerkat.Library
 {
-	public sealed class AdjectiveMorpher : Caching<Adjective>
+	public sealed class AdjectiveMorpher : Caching<Adjective>, IWordMorpher
 	{
 		public string Morph(string word, string form, string modifier = "M")
 		{

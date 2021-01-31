@@ -2,11 +2,12 @@
 using LingvoNET;
 using Meerkat.Library.Converters;
 using Meerkat.Library.Exceptions;
+using Meerkat.Library.Interfaces;
 
 
 namespace Meerkat.Library
 {
-	public sealed class NounMorpher : Caching<Noun>
+	public sealed class NounMorpher : Caching<Noun>, IWordMorpher
 	{
 		private readonly Dictionary<string, IFormConverter<Noun>> formConverters;
 

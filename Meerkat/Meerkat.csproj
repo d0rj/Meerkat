@@ -53,6 +53,7 @@
     <Compile Include="Library\Exceptions\UnknownVariableException.cs" />
     <Compile Include="Library\Exceptions\UnknownWordException.cs" />
     <Compile Include="Library\Interfaces\IFormConverter.cs" />
+    <Compile Include="Library\Interfaces\IWordMorpher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Library\TemplateEngine.cs" />
     <Compile Include="Library\NounMorpher.cs" />
