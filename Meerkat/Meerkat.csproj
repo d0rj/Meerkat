@@ -45,6 +45,7 @@
     <Compile Include="Library\Converters\AboutConverter.cs" />
     <Compile Include="Library\Converters\AboutPluralConverter.cs" />
     <Compile Include="Library\Converters\DefaultConverter.cs" />
+    <Compile Include="Library\Converters\Utils\CaseParser.cs" />
     <Compile Include="Library\Exceptions\UnknownFormException.cs" />
     <Compile Include="Library\Exceptions\UnknownVariableException.cs" />
     <Compile Include="Library\Exceptions\UnknownWordException.cs" />
