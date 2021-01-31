@@ -8,7 +8,6 @@ namespace Meerkat.Library.Converters
 	{
 		private readonly Case form;
 		private readonly Gender gender;
-		private readonly Number number = Number.Singular; // TODO: adj number support
 
 
 		public AdjectiveConverter(string form, string modifier = "M")
@@ -17,8 +16,7 @@ namespace Meerkat.Library.Converters
 
 			if (modifier.Contains("+"))
 			{
-				number = Number.Plural;
-				modifier = modifier.Replace("+", "").Replace(" ", "").Replace("\t", "");
+				modifier = modifier.Replace("+", "");
 			}
 
 			gender = GenderParser.Parse(modifier);

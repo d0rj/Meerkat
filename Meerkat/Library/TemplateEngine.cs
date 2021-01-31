@@ -12,7 +12,6 @@ namespace Meerkat.Library
 	{
 		private readonly List<IWordMorpher> wordMorphers;
 
-
 		public readonly string GeneralRegex = @"\[[\t ]*([A-Z_-]+)[\t ]*[|]{0,1}[\t ]*([a-zа-я]*)[\t ]*(\+){0,1}([FMN]){0,1}\]";
 
 		public bool IgnoreUnknown { get; set; }
@@ -32,6 +31,7 @@ namespace Meerkat.Library
 
 
 		public TemplateEngine(Dictionary<string, string> variables, bool ignoreUnknown = false)
+			: this()
 		{
 			Variables = variables;
 			IgnoreUnknown = ignoreUnknown;
@@ -47,15 +47,16 @@ namespace Meerkat.Library
 				var matched = match.Groups[0].Value;
 				var parsedVar = match.Groups[1].Value;
 				var form = match.Groups[2].Value;
-				var count = match.Groups[3].Value;
-				var gender = match.Groups[4].Value;
+				var count = match.Groups[3].Value ?? string.Empty;
+				var gender = match.Groups[4].Value ?? string.Empty;
 
-				var modifier = (count ?? string.Empty) + (gender ?? string.Empty);
+				var modifier = count + gender;
 
 				if (Variables.ContainsKey(parsedVar))
 				{
 					string processedWord = "";
 					Exception exception = null;
+
 					foreach (var morpher in wordMorphers)
 					{
 						try
@@ -64,8 +65,8 @@ namespace Meerkat.Library
 								Variables[parsedVar],
 								form,
 								modifier);
-							exception = null;
 
+							exception = null;
 							break;
 						}
 						catch (UnknownWordException e)
