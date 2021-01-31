@@ -8,7 +8,8 @@ namespace Meerkat.Library
 {
 	public sealed class TemplateEngine
 	{
-		private readonly NounMorpher wordMorpher = new NounMorpher();
+		private readonly NounMorpher nounMorpher = new NounMorpher();
+		private readonly AdjectiveMorpher adjectiveMorpher = new AdjectiveMorpher();
 
 
 		public readonly string GeneralRegex = @"\[[\t ]*([A-Z_-]+)[\t ]*[|]{0,1}[\t ]*([a-zа-я]*)[\t ]*(\+){0,1}([FMN]){0,1}\]";
@@ -40,13 +41,26 @@ namespace Meerkat.Library
 				var parsedVar = match.Groups[1].Value;
 				var form = match.Groups[2].Value;
 				var count = match.Groups[3].Value;
+				var gender = match.Groups[4].Value;
 
 				if (Variables.ContainsKey(parsedVar))
 				{
-					var processedWord = wordMorpher.Morph(
-						Variables[parsedVar], 
-						form, 
-						count ?? string.Empty);
+					string processedWord = "";
+					try
+					{
+						processedWord = nounMorpher.Morph(
+							Variables[parsedVar], 
+							form, 
+							count ?? string.Empty);
+					}
+					catch (UnknownWordException _)
+					{
+						processedWord = adjectiveMorpher.Morph(
+							Variables[parsedVar],
+							form,
+							(count ?? string.Empty) + (gender ?? string.Empty));
+					}
+
 					result = result.Replace(matched, processedWord);
 				}
 				else
