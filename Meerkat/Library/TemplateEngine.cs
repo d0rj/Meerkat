@@ -3,6 +3,7 @@ using Meerkat.Library.Interfaces;
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 
@@ -42,9 +43,12 @@ namespace Meerkat.Library
 		{
 			string result = template;
 
-			foreach (Match match in Regex.Matches(template, GeneralRegex))
+			MatchCollection matchList = Regex.Matches(template, GeneralRegex);
+			HashSet<string> allFinded = matchList.Cast<Match>()
+											.Select(x => x.Value).ToHashSet();
+
+			foreach (var finded in allFinded)
 			{
-				var finded = match.Value;
 				result = result.Replace(finded, ProcessSingle(finded));
 			}
 
