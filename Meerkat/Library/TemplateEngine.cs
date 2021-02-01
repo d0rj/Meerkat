@@ -77,34 +77,25 @@ namespace Meerkat.Library
 
 			if (Variables.ContainsKey(parsedVar))
 			{
-				string processedWord = "";
-				Exception exception = null;
+				var processedWord = string.Empty;
+				string word = Variables[parsedVar];
 
 				foreach (var morpher in wordMorphers)
 				{
-					try
+					if (morpher.CanMorph(word))
 					{
-						processedWord = morpher.Morph(
-							Variables[parsedVar],
-							command,
-							modifier);
-
-						exception = null;
+						processedWord = morpher.Morph(word, command, modifier);
 						break;
-					}
-					catch (UnknownWordException e)
-					{
-						exception = e;
 					}
 				}
 
-				if (exception == null)
+				if (processedWord != string.Empty)
 				{
 					processedWord = HandleUppercase(template, processedWord);
 					return processedWord;
 				}
 				else
-					throw exception;
+					throw new UnknownWordException(word);
 			}
 			else 
 			{

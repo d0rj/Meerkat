@@ -48,5 +48,24 @@ namespace Meerkat.Library
 
 			cached.Add(key, noun);
 		}
+
+
+		public bool CanMorph(string word)
+		{
+			if (IsCached(word))
+				return true;
+			else
+			{
+				try
+				{
+					Cache(word);
+					return true;
+				}
+				catch (UnknownWordException)
+				{
+					return false;
+				}
+			}
+		}
 	}
 }

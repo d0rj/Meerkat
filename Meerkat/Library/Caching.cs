@@ -18,5 +18,11 @@ namespace Meerkat.Library
 
 			return cached[key];
 		}
+
+
+		public bool IsCached(string key)
+		{
+			return cached.ContainsKey(key);
+		}
 	}
 }
