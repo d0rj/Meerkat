@@ -12,7 +12,7 @@ namespace Meerkat.Library
 	{
 		private readonly List<IWordMorpher> wordMorphers;
 
-		public readonly string GeneralRegex = @"\[[\t ]*([A-Z_-]+)[\t ]*[|]{0,1}[\t ]*([a-zа-я]*)[\t ]*(\+){0,1}([FMN]){0,1}\]";
+		public readonly string GeneralRegex = @"\[[\t ]*([A-Z_-]+)[\t ]*[|]{0,1}[\t ]*([a-zа-я]*)[\t ]*(\+){0,1}[\t ]*([FMN]){0,1}\]";
 
 		public bool IgnoreUnknown { get; set; }
 		public Dictionary<string, string> Variables { get; set; }
