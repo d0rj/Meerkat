@@ -39,13 +39,20 @@ namespace Meerkat.Library
 		}
 
 
+		/// <summary> Processes all units of the template in given string </summary>
+		/// <param name="template"> Template to process </param>
+		/// <exception cref="UnknownWordException"></exception>
+		/// <exception cref="UnknownFormException"></exception>
+		/// <exception cref="UnknownVariableException"> When <see cref="IgnoreUnknown"/> setted to <code><see langword="false"/></code> </exception>
 		public string ProcessTemplate(string template)
 		{
 			string result = template;
 
 			MatchCollection matchList = Regex.Matches(template, GeneralRegex);
-			HashSet<string> allFinded = matchList.Cast<Match>()
-											.Select(x => x.Value).ToHashSet();
+			HashSet<string> allFinded = matchList
+											.Cast<Match>()
+											.Select(x => x.Value)
+											.ToHashSet();
 
 			foreach (var finded in allFinded)
 			{
@@ -56,6 +63,13 @@ namespace Meerkat.Library
 		}
 
 
+		/// <summary> Processes one unit of the template based on internal settings </summary>
+		/// <param name="template"> Unit in square brackets to process </param>
+		/// <exception cref="UnknownWordException"> Throws when there are no workers 
+		/// to change the word and the <seealso cref="IgnoreUnknown"/> flag is not set </exception>
+		/// <exception cref="UnknownFormException"></exception>
+		/// <exception cref="UnknownVariableException"> When <see cref="IgnoreUnknown"/> setted to <code><see langword="false"/></code> </exception>
+		/// <returns> Processed string </returns>
 		public string ProcessSingle(string template)
 		{
 			var match = Regex.Match(template, GeneralRegex);
