@@ -7,14 +7,20 @@ namespace Meerkat.Library.Converters.Utils
 	{
 		public static Gender Parse(string input)
 		{
-			if (input == "M")
-				return Gender.M;
-			if (input == "F")
-				return Gender.F;
-			if (input == "N")
-				return Gender.N;
-
-			return Gender.Undefined;
+			switch (input)
+			{
+				case "M": return Gender.M;
+				case "F": return Gender.F;
+				case "N": return Gender.N;
+				case "P": return Gender.P;
+				case "MA": return Gender.MA;
+				case "FA": return Gender.FA;
+				case "NA": return Gender.NA;
+				case "PA": return Gender.PA;
+				case "MAFA": return Gender.MAFA;
+				default:
+					return Gender.Undefined;
+			}
 		}
 	}
 }
