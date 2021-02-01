@@ -1,4 +1,5 @@
 ﻿using Meerkat.Library.Exceptions;
+using Meerkat.Library.Extensions;
 using Meerkat.Library.Interfaces;
 
 using System;
@@ -98,17 +99,17 @@ namespace Meerkat.Library
 					}
 				}
 
-				if (exception != null)
-					throw exception;
-				else
+				if (exception == null)
 				{
 					if (template.StartsWith("^^"))
 						processedWord = processedWord.ToUpper();
 					else if (template.StartsWith("^"))
-						processedWord = processedWord.First().ToString().ToUpper() + processedWord.Substring(1);
+						processedWord = processedWord.FirstCharToUpper();
 
 					return processedWord;
 				}
+				else
+					throw exception;
 			}
 			else 
 			{
