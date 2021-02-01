@@ -13,7 +13,7 @@ namespace Meerkat.Library
 	{
 		private readonly List<IWordMorpher> wordMorphers;
 
-		public readonly string GeneralRegex = @"\[[\t ]*([A-Z_-]+)[\t ]*[|]{0,1}[\t ]*([a-zа-я]*)[\t ]*(\+){0,1}[\t ]*([FMN]){0,1}\]";
+		public readonly string GeneralRegex = @"[\^]{0,2}\[[\t ]*([A-Z_-]+)[\t ]*[|]{0,1}[\t ]*([a-zа-я]*)[\t ]*(\+){0,1}[\t ]*([FMN]){0,1}\]";
 
 		public bool IgnoreUnknown { get; set; }
 		public Dictionary<string, string> Variables { get; set; }
@@ -102,6 +102,11 @@ namespace Meerkat.Library
 					throw exception;
 				else
 				{
+					if (template.StartsWith("^^"))
+						processedWord = processedWord.ToUpper();
+					else if (template.StartsWith("^"))
+						processedWord = processedWord.First().ToString().ToUpper() + processedWord.Substring(1);
+
 					return processedWord;
 				}
 			}
