@@ -16,10 +16,12 @@ namespace Meerkat.Library.Converters
 
 			if (modifier.Contains("+"))
 			{
-				modifier = modifier.Replace("+", "");
+				gender = Gender.P;
 			}
-
-			gender = GenderParser.Parse(modifier);
+			else
+			{
+				gender = GenderParser.Parse(modifier);
+			}
 		}
 
 
