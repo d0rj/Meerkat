@@ -52,6 +52,7 @@
     <Compile Include="Library\Exceptions\UnknownFormException.cs" />
     <Compile Include="Library\Exceptions\UnknownVariableException.cs" />
     <Compile Include="Library\Exceptions\UnknownWordException.cs" />
+    <Compile Include="Library\Extensions\StringExtensions.cs" />
     <Compile Include="Library\Interfaces\IFormConverter.cs" />
     <Compile Include="Library\Interfaces\IWordMorpher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
