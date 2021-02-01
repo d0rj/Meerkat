@@ -44,49 +44,56 @@ namespace Meerkat.Library
 
 			foreach (Match match in Regex.Matches(template, GeneralRegex))
 			{
-				var matched = match.Groups[0].Value;
-				var (parsedVar, command, modifier) = SplitMatch(match);
-
-				if (Variables.ContainsKey(parsedVar))
-				{
-					string processedWord = "";
-					Exception exception = null;
-
-					foreach (var morpher in wordMorphers)
-					{
-						try
-						{
-							processedWord = morpher.Morph(
-								Variables[parsedVar],
-								command,
-								modifier);
-
-							exception = null;
-							break;
-						}
-						catch (UnknownWordException e)
-						{
-							exception = e;
-						}
-					}
-
-					if (exception != null)
-						throw exception;
-					else
-					{
-						result = result.Replace(matched, processedWord);
-					}
-				}
-				else
-				{
-					if (IgnoreUnknown)
-						continue;
-					else
-						throw new UnknownVariableException(parsedVar);
-				}
+				var finded = match.Value;
+				result = result.Replace(finded, ProcessSingle(finded));
 			}
 
 			return result;
+		}
+
+
+		public string ProcessSingle(string template)
+		{
+			var match = Regex.Match(template, GeneralRegex);
+			var (parsedVar, command, modifier) = SplitMatch(match);
+
+			if (Variables.ContainsKey(parsedVar))
+			{
+				string processedWord = "";
+				Exception exception = null;
+
+				foreach (var morpher in wordMorphers)
+				{
+					try
+					{
+						processedWord = morpher.Morph(
+							Variables[parsedVar],
+							command,
+							modifier);
+
+						exception = null;
+						break;
+					}
+					catch (UnknownWordException e)
+					{
+						exception = e;
+					}
+				}
+
+				if (exception != null)
+					throw exception;
+				else
+				{
+					return processedWord;
+				}
+			}
+			else 
+			{
+				if (IgnoreUnknown)
+					return template;
+				else
+					throw new UnknownVariableException(parsedVar);
+			}
 		}
 
 
