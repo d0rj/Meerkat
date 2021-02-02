@@ -1,5 +1,7 @@
 # Meerkat
 
+![Project cover](meerkat.jpg | width=150)
+
 ⚠️ Work in progress! ⚠️
 
 ## Описание
