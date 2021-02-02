@@ -1,6 +1,8 @@
 # Meerkat
 
-![Project cover](meerkat.jpg | width=150)
+<center>
+    <img src="meerkat.jpg" alt="alt text" width="250">
+</center>
 
 ⚠️ Work in progress! ⚠️
 
