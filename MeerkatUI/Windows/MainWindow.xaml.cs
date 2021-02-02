@@ -20,6 +20,7 @@ namespace MeerkatUI
 	{
 		private readonly TemplateEngine engine;
 		private string openedTemplatePath = string.Empty;
+		private char NewVariableName = 'A';
 
 		private Settings settings = new Settings();
 		public Settings Settings
@@ -81,6 +82,13 @@ namespace MeerkatUI
 		}
 
 
+		private void IncrementVariableName()
+		{
+			if (NewVariableName < 'Z')
+				++NewVariableName;
+		}
+
+
 		private void ProcessButton_Click(object sender, RoutedEventArgs e)
 		{
 			RefreshVariables();
@@ -135,7 +143,8 @@ namespace MeerkatUI
 
 		private void AddVariable(object sender, RoutedEventArgs e)
 		{
-			Variables.Add(new Variable("A", "яблоко"));
+			Variables.Add(new Variable(NewVariableName.ToString(), "яблоко"));
+			IncrementVariableName();
 		}
 
 
