@@ -4,7 +4,7 @@ using Meerkat.Library.Interfaces;
 
 namespace Meerkat.Library.Converters
 {
-	public sealed class UppercaseHandler : IWordMorpher
+	internal sealed class UppercaseHandler : IWordMorpher
 	{
 		public bool CanMorph(string word) => word.Length > 0;
 

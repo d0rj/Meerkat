@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Meerkat.Library.Converters.Utils
 {
-	public static class CaseParser
+	internal static class CaseParser
 	{
 		private static Dictionary<string, Case> commands =
 			new Dictionary<string, Case>()

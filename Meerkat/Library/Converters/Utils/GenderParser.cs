@@ -3,7 +3,7 @@
 
 namespace Meerkat.Library.Converters.Utils
 {
-	public static class GenderParser
+	internal static class GenderParser
 	{
 		public static Gender Parse(string input)
 		{

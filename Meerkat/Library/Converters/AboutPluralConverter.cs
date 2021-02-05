@@ -3,7 +3,7 @@
 
 namespace Meerkat.Library.Converters
 {
-	public sealed class AboutPluralConverter : AboutConverter
+	internal sealed class AboutPluralConverter : AboutConverter
 	{
 		protected override string MorphWord(Noun word)
 		{

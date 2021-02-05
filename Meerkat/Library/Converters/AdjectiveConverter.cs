@@ -4,7 +4,7 @@ using Meerkat.Library.Converters.Utils;
 
 namespace Meerkat.Library.Converters
 {
-	public class AdjectiveConverter : IFormConverter<Adjective>
+	internal class AdjectiveConverter : IFormConverter<Adjective>
 	{
 		private readonly Case form;
 		private readonly Gender gender;

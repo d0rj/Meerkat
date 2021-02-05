@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Meerkat.Library.Converters
 {
-	public class AboutConverter : IFormConverter<Noun>
+	internal class AboutConverter : IFormConverter<Noun>
 	{
 		private readonly List<char> vowels 
 			= new List<char>() { 'у', 'ы', 'а', 'о', 'э', 'и' };

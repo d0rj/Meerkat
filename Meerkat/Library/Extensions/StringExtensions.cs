@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Meerkat.Library.Extensions
 {
-	public static class StringExtensions
+	internal static class StringExtensions
 	{
         public static string FirstCharToUpper(this string input)
         {

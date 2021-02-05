@@ -6,7 +6,7 @@ using Meerkat.Library.Exceptions;
 
 namespace Meerkat.Library.Converters
 {
-	public class DefaultConverter : IFormConverter<Noun>
+	internal class DefaultConverter : IFormConverter<Noun>
 	{
 		protected readonly Case convertCase;
 		protected readonly Number number;
