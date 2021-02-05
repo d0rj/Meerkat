@@ -47,6 +47,7 @@
     <Compile Include="Library\Converters\AboutPluralConverter.cs" />
     <Compile Include="Library\Converters\AdjectiveConverter.cs" />
     <Compile Include="Library\Converters\DefaultConverter.cs" />
+    <Compile Include="Library\Converters\UppercaseHandler.cs" />
     <Compile Include="Library\Converters\Utils\CaseParser.cs" />
     <Compile Include="Library\Converters\Utils\GenderParser.cs" />
     <Compile Include="Library\Exceptions\UnknownFormException.cs" />

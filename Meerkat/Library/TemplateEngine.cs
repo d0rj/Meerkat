@@ -1,8 +1,7 @@
-﻿using Meerkat.Library.Exceptions;
-using Meerkat.Library.Extensions;
+﻿using Meerkat.Library.Converters;
+using Meerkat.Library.Exceptions;
 using Meerkat.Library.Interfaces;
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -13,6 +12,7 @@ namespace Meerkat.Library
 	public sealed class TemplateEngine
 	{
 		private readonly List<IWordMorpher> wordMorphers;
+		private readonly UppercaseHandler uppercaseHandler = new UppercaseHandler();
 		private readonly string GeneralRegex = @"[\^]{0,2}\[[\t ]*([A-Z_-]+)[\t ]*[|]{0,1}[\t ]*([a-zа-я]*)[\t ]*(\+){0,1}[\t ]*([FMN]|FA|MA|NA|PA|MAFA){0,1}\]";
 
 		public bool IgnoreUnknown { get; set; }
@@ -89,9 +89,9 @@ namespace Meerkat.Library
 					}
 				}
 
-				if (processedWord != string.Empty)
+				if (uppercaseHandler.CanMorph(processedWord))
 				{
-					processedWord = HandleUppercase(template, processedWord);
+					processedWord = uppercaseHandler.Morph(processedWord, template);
 					return processedWord;
 				}
 				else
@@ -116,16 +116,5 @@ namespace Meerkat.Library
 
 			return (parsedVar, command, modifier);
 		}
-
-
-		private string HandleUppercase(string template, string processed)
-		{
-			if (template.StartsWith("^^"))
-				return processed.ToUpper();
-			else if (template.StartsWith("^"))
-				return processed.FirstCharToUpper();
-
-			return processed;
-		} 
 	}
 }
