@@ -13,7 +13,6 @@ namespace Meerkat.Library
 	{
 		private readonly List<IWordMorpher> wordMorphers;
 		private readonly UppercaseHandler uppercaseHandler = new UppercaseHandler();
-		private readonly string GeneralRegex = @"[\^]{0,2}\[[\t ]*([A-Z_-]+)[\t ]*[|]{0,1}[\t ]*([a-zа-я]*)[\t ]*(\+){0,1}[\t ]*([FMN]|FA|MA|NA|PA|MAFA){0,1}\]";
 
 		public bool IgnoreUnknown { get; set; }
 		public Dictionary<string, string> Variables { get; set; }
@@ -48,7 +47,7 @@ namespace Meerkat.Library
 		{
 			string result = template;
 
-			MatchCollection matchList = Regex.Matches(template, GeneralRegex);
+			MatchCollection matchList = TemplateParser.ParseAll(template);
 			HashSet<string> allFinded = matchList
 											.Cast<Match>()
 											.Select(x => x.Value)
@@ -72,8 +71,8 @@ namespace Meerkat.Library
 		/// <returns> Processed string </returns>
 		public string ProcessSingle(string template)
 		{
-			var match = Regex.Match(template, GeneralRegex);
-			var (parsedVar, command, modifier) = SplitMatch(match);
+			var match = TemplateParser.ParseSingle(template);
+			var (parsedVar, command, modifier) = TemplateParser.Split(match);
 
 			if (Variables.ContainsKey(parsedVar))
 			{
@@ -104,17 +103,6 @@ namespace Meerkat.Library
 				else
 					throw new UnknownVariableException(parsedVar);
 			}
-		}
-
-
-		private (string parsedVar, string command, string modifier) SplitMatch(Match match)
-		{
-			var parsedVar = match.Groups[1].Value;
-			var command = match.Groups[2].Value;
-			var modifier = (match.Groups[3].Value ?? string.Empty) 
-							+ (match.Groups[4].Value ?? string.Empty);
-
-			return (parsedVar, command, modifier);
 		}
 	}
 }

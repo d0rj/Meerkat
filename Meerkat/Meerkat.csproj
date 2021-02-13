@@ -56,6 +56,8 @@
     <Compile Include="Library\Extensions\StringExtensions.cs" />
     <Compile Include="Library\Interfaces\IFormConverter.cs" />
     <Compile Include="Library\Interfaces\IWordMorpher.cs" />
+    <Compile Include="Library\TemplateParser.cs" />
+    <Compile Include="Library\TemplateVars.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Library\TemplateEngine.cs" />
     <Compile Include="Library\Morphers\NounMorpher.cs" />
