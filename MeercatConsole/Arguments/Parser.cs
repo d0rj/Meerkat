@@ -44,16 +44,16 @@ namespace MeercatConsole.Arguments
 		}
 
 
-		public static ParsingResult Parse(string[] args)
+		public static ParsingResult Parse(string[] args, bool skipFirst = true)
 		{
-			var variables = new Dictionary<string, string>();
+			if (skipFirst)
+				args = args[1..];
 
-			args = args[1..];
-			variables = args.Select(a => a.Split(new[] { '=' }, 2))
+			var variables = args.Select(a => a.Split(new[] { '=' }, 2))
 					 .GroupBy(a => a[0], a => a.Length == 2 ? a[1] : null)
 					 .ToDictionary(g => g.Key, g => g.FirstOrDefault());
 
-			return new ParsingResult(variables ?? new Dictionary<string, string>());
+			return new ParsingResult(variables);
 		}
 	}
 }
