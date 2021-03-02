@@ -1,6 +1,9 @@
 ﻿using MeercatConsole.Arguments;
 
+using Meerkat.Library;
+
 using System;
+using System.Text;
 
 
 namespace MeercatConsole
@@ -9,11 +12,15 @@ namespace MeercatConsole
 	{
 		static void Main(string[] args)
 		{
-			args = new string[] { "MeerkatConsole.exe", "read", "X=hello", "file='hi.txt'", "A=привет" };
+			// For 1251
+			Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-			var result = Parser.Parse(args).Variables;
-			foreach (var key in result.Keys)
-				Console.WriteLine(key + "=" + result[key]);
+			args = new string[] { "MeerkatConsole.exe", "read", "X=сова", "file='hi.txt'", "A=привет" };
+
+			var variables = Parser.Parse(args).Variables;
+			var engine = new TemplateEngine(variables);
+
+			Console.WriteLine(engine.ProcessTemplate("Разговоры [X| about]."));
 		}
 	}
 }
