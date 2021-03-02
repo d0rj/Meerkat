@@ -27,9 +27,9 @@ namespace MeercatConsole.Arguments
 
 				foreach (var pair in this.keyValues)
 				{
-					if (char.ToLower(pair.Key[0]) == pair.Key[0] && pair.Value == null)
+					if (char.IsLower(pair.Key[0]) && pair.Value == null)
 						Flags.Add(pair.Key);
-					else if (char.ToLower(pair.Key[0]) != pair.Key[0])
+					else if (char.IsUpper(pair.Key[0]))
 						Variables.Add(pair.Key, pair.Value);
 					else
 						Commands.Add(pair.Key, pair.Value);
