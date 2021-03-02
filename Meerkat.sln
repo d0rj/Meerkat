@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeerkatUI", "MeerkatUI\Meer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meerkat", "Meerkat\Meerkat.csproj", "{14B8E41C-E42C-4DB1-ADF3-F9F9E5D12BF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeercatConsole", "MeercatConsole\MeercatConsole.csproj", "{13927297-0EC9-4B61-844E-72B777A1EB4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{14B8E41C-E42C-4DB1-ADF3-F9F9E5D12BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14B8E41C-E42C-4DB1-ADF3-F9F9E5D12BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14B8E41C-E42C-4DB1-ADF3-F9F9E5D12BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13927297-0EC9-4B61-844E-72B777A1EB4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13927297-0EC9-4B61-844E-72B777A1EB4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13927297-0EC9-4B61-844E-72B777A1EB4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13927297-0EC9-4B61-844E-72B777A1EB4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
